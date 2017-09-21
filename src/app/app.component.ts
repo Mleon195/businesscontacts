@@ -1,15 +1,21 @@
-import { Component } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { Component,OnInit } from '@angular/core';
+import {FirebaseService} from './services/firebase.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [FirebaseService]
 })
 export class AppComponent {
-  items: FirebaseListObservable<any[]>;
-  title = 'app';
-  constructor(db: AngularFireDatabase) {
-    this.items = db.list('/items');
+  constructor(private _firebaseService: FirebaseService) {
+
  }
+
+ ngOnInit(){
+  this._firebaseService.getBusinesses().subscribe(businesses => {
+    console.log(businesses);
+  })
+ }
+
 }

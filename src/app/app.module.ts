@@ -6,9 +6,6 @@ import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent
