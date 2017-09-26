@@ -14,14 +14,26 @@ export class FirebaseService{
 
   }
 
-  getBusinesses() {
-    this.businesses = this._db.list('/businesses') as
-    FirebaseListObservable<Business[]>
-    return this.businesses;
+  getBusinesses(category:string = null) {
+    if(category != null){
+      this.businesses = this._db.list('/businesses', {
+        query: {
+                orderByChild: 'category',
+                equalTo: category
+        }
+      }) as
+      FirebaseListObservable<Business[]>
+
+    } else {
+      this.businesses = this._db.list('/businesses') as
+      FirebaseListObservable<Business[]>
+
+      }
+      return this.businesses;
   }
 
   getCategories() {
-    this.businesses = this._db.list('/categories') as
+    this.categories = this._db.list('/categories') as
     FirebaseListObservable<Category[]>
     return this.categories;
   }

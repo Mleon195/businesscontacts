@@ -1,11 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!--<div style="text-align:center">
   <h3>
     Welcome to {{title}}!
   </h3>
   <img width="100" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div>
-<div class="top-bar">
+-->
+<div class="top-bar" >
   <div class="row">
     <div class="top-bar-left">
       <ul class="menu">
@@ -19,10 +20,24 @@
 </div>
 <br>
 
+<div class="row">
+  <div class="large-6 columns">
+    <button class="button">Add Business</button>
+  </div>
+  <div class="large-6 columns">
+    <label> Filter Category
+      <select (change)="filterCategory(filteredCategory.value)" #filteredCategory>
+        <option value="0">Select</option>
+        <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+      </select>
+    </label>
+  </div>
+</div>
+
 <div *ngIf="appState == 'extend'">
   <div class="row">
     <div class="large-12 columns">
-      <button (click)="changeState('default')"class="button alert">Go Back</button>
+      <button (click)="changeState('default')" class="button alert">Go Back</button>
     </div>
   </div>
 
@@ -30,32 +45,32 @@
 <div *ngFor="let business of businesses">
   <div *ngIf="business.$key == activeKey">
     <div class="row">
-      <div class="large-5 columns large-offset-1">
-        <h3>{{business.company}}</h3>
-        <p>Category: {{business.category}}</p>
-        <p>Years in Business: {{business.years_in_business}}</p>
-        <p>{{business.description}}</p>
-      </div>
-      <div class="large-5 columns large-offset-1">
-          <h4>Contact Info</h4>
-          <ul>
-            <li>Phone: {{business.phone}}</li>
-            <li>Email: {{business.email}}</li>
-            <li>Street: {{business.street_address}}</li>
-            <li>City: {{business.city}}</li>
-            <li>State: {{business.state}}</li>
-            <li>Zipcode: {{business.zipcode}}</li>
-          </ul>
-      </div>
-
+          <div class="large-5 columns large-offset-1">
+            <h3>{{business.company}}</h3>
+            <p>Category: {{business.category}}</p>
+            <p>Years in Business: {{business.years_in_business}}</p>
+            <p>{{business.description}}</p>
+          </div>
+          <div class="large-5 columns large-offset-1">
+            <h4>Contact Info</h4>
+            <ul>
+              <li>Phone: {{business.phone}}</li>
+              <li>Email: {{business.email}}</li>
+              <li>Street: {{business.street_address}}</li>
+              <li>City: {{business.city}}</li>
+              <li>State: {{business.state}}</li>
+              <li>Zipcode: {{business.zipcode}}</li>
+            </ul>
+          </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="row">
   <div class="large-12 columns">
     <div *ngIf="businesses">
-      <table>
+      <table style="border-spacing: 0">
         <thead>
           <tr>
             <th class="text-left">Company</th>

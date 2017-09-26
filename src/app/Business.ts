@@ -1,7 +1,8 @@
 export interface Business{
-  $key$: string;
+  $key?: string;
   company?: string;
-  description: string;
+  description?: string;
+  category: string;
   year_in_business?:number;
   street_address?: string;
   city: string;
