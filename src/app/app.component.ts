@@ -3,6 +3,7 @@ import {FirebaseService} from './services/firebase.service';
 import {Business} from './Business';
 import {Category} from './Category';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,6 +13,8 @@ import {Category} from './Category';
 export class AppComponent implements OnInit{
   businesses:Business[];
   categories:Category[];
+  appState: string;
+  activeKey: string;
 
   constructor(private _firebaseService: FirebaseService) {
 
@@ -25,5 +28,12 @@ ngOnInit(){
   this._firebaseService.getCategories().subscribe(categories => {
     this.categories = categories;
   });
+ }
+
+ changeState(state, key){
+  if(key){
+    this.activeKey = key;
+  }
+  this.appState = state;
  }
 }
