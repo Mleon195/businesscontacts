@@ -3,7 +3,7 @@ export interface Business{
   company?: string;
   description?: string;
   category: string;
-  year_in_business?:number;
+  years_in_business?:number;
   street_address?: string;
   city: string;
   state?:string;
